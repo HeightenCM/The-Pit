@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://d0tbb6tosqaou"]
+[gd_scene load_steps=2 format=3 uid="uid://d0tbb6tosqaou"]
+
+[ext_resource type="Script" uid="uid://d28ipxaecfjgk" path="res://start_menu.gd" id="1_jwbto"]
 
 [node name="StartMenu" type="Node2D"]
+script = ExtResource("1_jwbto")
 
 [node name="Button2" type="Button" parent="."]
 offset_left = 448.0
@@ -19,3 +22,5 @@ theme_override_font_sizes/font_size = 60
 text = "The Pit"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
