@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://5w3x4mcig243"]
+
+[ext_resource type="Texture2D" uid="uid://cbyi0t1apjpy6" path="res://icon.svg" id="1_g2els"]
+[ext_resource type="Script" uid="uid://bjobl0ondsg6m" path="res://scripts/player.gd" id="1_qhqgy"]
+[ext_resource type="Script" uid="uid://m2tjaca0njt1" path="res://scripts/gun_pivot.gd" id="2_qhqgy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tr34o"]
+radius = 28.0
+height = 124.0
+
+[node name="Pete" type="CharacterBody2D"]
+script = ExtResource("1_qhqgy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_g2els")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_tr34o")
+
+[node name="GunPivot" type="Node2D" parent="."]
+script = ExtResource("2_qhqgy")
+
+[node name="Sprite2D" type="Sprite2D" parent="GunPivot"]
+position = Vector2(0, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_g2els")
+
+[node name="Camera2D" type="Camera2D" parent="."]
