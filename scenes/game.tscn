@@ -8,5 +8,15 @@
 script = ExtResource("1_yqjtg")
 
 [node name="Pete" parent="." instance=ExtResource("2_lnu2h")]
+position = Vector2(576, 320)
 
-[node name="PauseMenu" parent="." instance=ExtResource("3_lnu2h")]
+[node name="PauseMenu" parent="Pete" instance=ExtResource("3_lnu2h")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -576.0
+offset_top = -320.0
+offset_right = -576.0
+offset_bottom = -320.0
+grow_horizontal = 1
+grow_vertical = 1
