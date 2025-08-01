@@ -14,6 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_n87rw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(10000, 10000)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

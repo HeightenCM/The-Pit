@@ -1,8 +1,9 @@
 extends Control
 
-
+@onready var ui = get_parent().get_node("UI")
 
 func _on_resume() -> void:
+	ui.visible = true
 	get_tree().paused = false
 	visible = false
 
