@@ -44,8 +44,10 @@ offset_bottom = 192.0
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 2
 offset_left = 384.0
-offset_top = 344.0
+offset_top = 320.0
 offset_right = 1088.0
 offset_bottom = 584.0
 
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="ready" from="HBoxContainer" to="." method="_on_h_box_container_ready"]
