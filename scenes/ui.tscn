@@ -23,7 +23,11 @@ offset_right = 128.0
 offset_bottom = 40.0
 
 [node name="ProgressBar" type="ProgressBar" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 value = 100.0
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]

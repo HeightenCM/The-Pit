@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://cupcrxm4vchqt"]
+[gd_scene load_steps=4 format=3 uid="uid://cupcrxm4vchqt"]
 
 [ext_resource type="Script" uid="uid://85qgb23pfnl4" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://5w3x4mcig243" path="res://scenes/player.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://c4o5lgxy1k3kp" path="res://scenes/pause_menu.tscn" id="3_lnu2h"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_yqjtg")
 
 [node name="Pete" parent="." instance=ExtResource("2_lnu2h")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_lnu2h")]
