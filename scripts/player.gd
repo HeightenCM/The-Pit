@@ -8,6 +8,11 @@ func _process(delta):
 	var mouse_pos = get_global_mouse_position()
 	var dir = (mouse_pos - global_position).normalized()
 	$GunPivot.position = dir * orbit_radius
+	$GunPivot.rotation = dir.angle()
+	if mouse_pos.x < global_position.x:
+		$GunPivot.get_node("Sprite2D").flip_v = true
+	else:
+		$GunPivot.get_node("Sprite2D").flip_v = false
 
 func _physics_process(delta: float) -> void:
 	var input_vector = Vector2.ZERO

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://5w3x4mcig243"]
+[gd_scene load_steps=7 format=3 uid="uid://5w3x4mcig243"]
 
 [ext_resource type="Texture2D" uid="uid://cbyi0t1apjpy6" path="res://icon.svg" id="1_g2els"]
 [ext_resource type="Script" uid="uid://bjobl0ondsg6m" path="res://scripts/player.gd" id="1_qhqgy"]
 [ext_resource type="Script" uid="uid://m2tjaca0njt1" path="res://scripts/gun_pivot.gd" id="2_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://cam8swykaip38" path="res://scenes/ui.tscn" id="4_dqkch"]
+[ext_resource type="Texture2D" uid="uid://bowjaloak7q3l" path="res://assets/sprites/guns/1Revolver01.png" id="4_qlg0r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tr34o"]
 radius = 28.0
@@ -23,8 +24,8 @@ script = ExtResource("2_qhqgy")
 
 [node name="Sprite2D" type="Sprite2D" parent="GunPivot"]
 position = Vector2(0, 1)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_g2els")
+scale = Vector2(5, 5)
+texture = ExtResource("4_qlg0r")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
