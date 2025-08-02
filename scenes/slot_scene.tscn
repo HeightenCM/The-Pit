@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://csi3vsg5yktku"]
+[gd_scene load_steps=2 format=3 uid="uid://csi3vsg5yktku"]
+
+[ext_resource type="Script" uid="uid://kfvoj7psfbi" path="res://scripts/slot_scene.gd" id="1_q16yw"]
 
 [node name="slot_scene" type="Control"]
 custom_minimum_size = Vector2(65, 65)
@@ -6,9 +8,13 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_q16yw")
 
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(65, 65)
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
