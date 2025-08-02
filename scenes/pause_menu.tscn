@@ -19,6 +19,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -4432.0
+offset_top = -4600.0
+offset_right = 4416.0
+offset_bottom = 4752.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.776471)
@@ -37,20 +41,30 @@ text = "Paused"
 layout_mode = 2
 text = "Resume"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 offset_left = 384.0
 offset_top = 64.0
 offset_right = 1088.0
 offset_bottom = 192.0
+horizontal_scroll_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="Ammo_HBox" type="HBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 32
+
+[node name="Inventory_GridContainer" type="GridContainer" parent="."]
 layout_mode = 2
 offset_left = 384.0
 offset_top = 320.0
 offset_right = 1088.0
 offset_bottom = 584.0
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 10
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="ready" from="HBoxContainer" to="." method="_on_h_box_container_ready"]
+[connection signal="ready" from="ScrollContainer/Ammo_HBox" to="." method="_on_h_box_container_ready"]

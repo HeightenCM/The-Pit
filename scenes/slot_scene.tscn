@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://csi3vsg5yktku"]
+
+[node name="slot_scene" type="Control"]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.508541, 0.000184245, 0.508537, 1)
