@@ -34,6 +34,7 @@ func _on_ready() -> void:
 	rifle_slots.fill(null)
 	refresh_slots()
 	populate_inventory()
+	disable_inventory()
 	
 func refresh_slots() -> void:
 	for child in ammo_hbox.get_children():
@@ -48,3 +49,13 @@ func populate_inventory() -> void:
 		var slot = slot_scene.instantiate()
 		inventory_container.add_child(slot)
 		print("added inventory slot", i)
+
+func disable_inventory() -> void:
+	inventory_container.modulate.a = 0.5
+	for child in inventory_container.get_children():
+		if child is Button:
+			child.disabled = true
+			child.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	
+func enable_inventory() -> void:
+	inventory_container.modulate.a = 1
