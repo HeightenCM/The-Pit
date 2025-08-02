@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://cupcrxm4vchqt"]
+[gd_scene load_steps=10 format=4 uid="uid://cupcrxm4vchqt"]
 
 [ext_resource type="Script" uid="uid://85qgb23pfnl4" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://ckn5x620l0655" path="res://assets/sprites/world/tileset.png" id="2_iywne"]
@@ -72,6 +72,9 @@ texture = ExtResource("2_iywne")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_p57ef")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_p57ef"]
+parsed_collision_mask = 4294967041
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_yqjtg")
 
@@ -97,3 +100,6 @@ scale = Vector2(0.386666, 0.506666)
 
 [node name="Pickup" parent="." instance=ExtResource("6_p57ef")]
 position = Vector2(256, 248)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_p57ef")
