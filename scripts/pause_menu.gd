@@ -74,3 +74,10 @@ func start_selection(index: int) -> void:
 	index_selecting = index
 	enable_inventory()
 	resume_button.disabled = true
+	
+func select(index:int) -> void:
+	resume_button.disabled = false
+	var item_aux:String = ammo_hbox.get_child(index_selecting).item
+	ammo_hbox.get_child(index_selecting).item = inventory_container.get_child(index).item
+	inventory_container.get_child(index).item = item_aux
+	disable_inventory()
