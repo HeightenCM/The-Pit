@@ -12,3 +12,4 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if direction != Vector2.ZERO:
 		position += direction.normalized() * SPEED * delta
+		rotation = direction.angle()

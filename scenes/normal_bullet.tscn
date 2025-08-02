@@ -1,17 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://dn84bb3bqldd6"]
+[gd_scene load_steps=5 format=3 uid="uid://dn84bb3bqldd6"]
 
 [ext_resource type="Script" uid="uid://be18qo1al7b6n" path="res://scripts/normal_bullet.gd" id="1_6reey"]
-[ext_resource type="Texture2D" uid="uid://cbyi0t1apjpy6" path="res://icon.svg" id="1_cmnci"]
+[ext_resource type="Texture2D" uid="uid://dvv4t8tyeuw8e" path="res://assets/sprites/guns/Bullets.png" id="2_6reey"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbib7"]
+atlas = ExtResource("2_6reey")
+region = Rect2(0, 4.89397, 13.0847, 5.28604)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6reey"]
-radius = 4.0
+radius = 3.0
 
 [node name="NormalBullet" type="Area2D"]
+scale = Vector2(3, 3)
 script = ExtResource("1_6reey")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.0647381, 0.0616454)
-texture = ExtResource("1_cmnci")
+scale = Vector2(0.5, 0.477)
+texture = SubResource("AtlasTexture_fbib7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6reey")

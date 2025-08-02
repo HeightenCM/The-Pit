@@ -43,6 +43,6 @@ func orbit_weapon():
 
 func _input(event: InputEvent) -> void:
 	var mouse_pos = get_global_mouse_position()
-	var dist = global_position.distance_to(mouse_pos)-10
+	var dist = global_position.distance_to(mouse_pos)-15
 	if event.is_action_pressed("ui_accept") and current_weapon and dist >= orbit_radius:
 		current_weapon.shoot()
