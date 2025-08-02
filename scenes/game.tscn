@@ -11,17 +11,18 @@ script = ExtResource("1_yqjtg")
 [node name="Pete" parent="." instance=ExtResource("2_lnu2h")]
 position = Vector2(576, 320)
 
+[node name="UI" parent="Pete" instance=ExtResource("4_lbhrr")]
+
 [node name="PauseMenu" parent="Pete" instance=ExtResource("3_lnu2h")]
 z_index = 1
 z_as_relative = true
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -576.0
-offset_top = -320.0
-offset_right = -576.0
-offset_bottom = -320.0
+offset_left = -186.0
+offset_top = -105.667
+offset_right = -186.0
+offset_bottom = -105.667
 grow_horizontal = 1
 grow_vertical = 1
-
-[node name="UI" parent="Pete" instance=ExtResource("4_lbhrr")]
+scale = Vector2(0.386666, 0.506666)

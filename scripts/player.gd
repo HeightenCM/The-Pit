@@ -2,20 +2,18 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 
-@export var orbit_radius: float = 30.0  # Distance from parent
+@export var orbit_radius: float = 25.0  # Distance from parent
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var gun_pivot: Node2D = $GunPivot
+var current_weapon: Node2D = null
 
+func _ready() -> void:
+	current_weapon = preload("res://scenes/revolver.tscn").instantiate()
+	add_child(current_weapon)
 
 func _process(delta):
-	var mouse_pos = get_global_mouse_position()
-	var dir = (mouse_pos - global_position).normalized()
-	gun_pivot.position = dir * orbit_radius
-	gun_pivot.rotation = dir.angle()
-	if mouse_pos.x < global_position.x:
-		gun_pivot.get_node("Sprite2D").flip_v = true
-	else:
-		gun_pivot.get_node("Sprite2D").flip_v = false
+	if current_weapon:
+		print("ready")
+		orbit_weapon()
 
 func _physics_process(delta: float) -> void:
 	var input_vector = Vector2.ZERO
@@ -33,3 +31,13 @@ func _physics_process(delta: float) -> void:
 	velocity = input_vector * SPEED
 	print(position)
 	move_and_slide()
+
+func orbit_weapon():
+	var mouse_pos = get_global_mouse_position()
+	var dir = (mouse_pos - global_position).normalized()
+	current_weapon.position = dir * orbit_radius
+	current_weapon.rotation = dir.angle()
+	if mouse_pos.x < global_position.x:
+		current_weapon.get_node("Sprite2D").flip_v = true
+	else:
+		current_weapon.get_node("Sprite2D").flip_v = false

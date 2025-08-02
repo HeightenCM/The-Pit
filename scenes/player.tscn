@@ -1,9 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://5w3x4mcig243"]
+[gd_scene load_steps=19 format=3 uid="uid://5w3x4mcig243"]
 
 [ext_resource type="Script" uid="uid://bjobl0ondsg6m" path="res://scripts/player.gd" id="1_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://bih5l30u877bw" path="res://assets/sprites/characters/Pete_SpriteSheet.png" id="2_dqkch"]
-[ext_resource type="Script" uid="uid://m2tjaca0njt1" path="res://scripts/gun_pivot.gd" id="2_qhqgy"]
-[ext_resource type="Texture2D" uid="uid://bowjaloak7q3l" path="res://assets/sprites/guns/1Revolver01.png" id="4_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
 atlas = ExtResource("2_dqkch")
@@ -121,7 +119,7 @@ radius = 6.5
 height = 32.0
 
 [node name="Pete" type="CharacterBody2D"]
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 script = ExtResource("1_qhqgy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -132,14 +130,5 @@ frame_progress = 0.331602
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_tr34o")
-
-[node name="GunPivot" type="Node2D" parent="."]
-scale = Vector2(0.2, 0.2)
-script = ExtResource("2_qhqgy")
-
-[node name="Sprite2D" type="Sprite2D" parent="GunPivot"]
-position = Vector2(0, 1)
-scale = Vector2(5, 5)
-texture = ExtResource("4_qlg0r")
 
 [node name="Camera2D" type="Camera2D" parent="."]
