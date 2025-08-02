@@ -4,7 +4,7 @@ const SPEED = 5000.0
 
 @export var orbit_radius: float = 25.0  # Distance from parent
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-var current_weapon: Node2D = null
+var current_weapon: Weapon = null
 
 func _ready() -> void:
 	current_weapon = preload("res://scenes/revolver.tscn").instantiate()
@@ -12,7 +12,6 @@ func _ready() -> void:
 
 func _process(delta):
 	if current_weapon:
-		print("ready")
 		orbit_weapon()
 
 func _physics_process(delta: float) -> void:
@@ -30,7 +29,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		animated_sprite_2d.play("move")
 	velocity = input_vector * SPEED
-	print(position)
 	move_and_slide()
 
 func orbit_weapon():
@@ -42,3 +40,7 @@ func orbit_weapon():
 		current_weapon.get_node("Sprite2D").flip_v = true
 	else:
 		current_weapon.get_node("Sprite2D").flip_v = false
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept") and current_weapon:
+		current_weapon.shoot()
