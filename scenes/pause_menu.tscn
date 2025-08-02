@@ -50,9 +50,16 @@ offset_right = 1088.0
 offset_bottom = 192.0
 horizontal_scroll_mode = 2
 
-[node name="Ammo_HBox" type="HBoxContainer" parent="ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="Ammo_HBox" type="HBoxContainer" parent="ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
 theme_override_constants/separation = 32
 
 [node name="Inventory_GridContainer" type="GridContainer" parent="."]
@@ -67,4 +74,4 @@ columns = 10
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="ready" from="ScrollContainer/Ammo_HBox" to="." method="_on_h_box_container_ready"]
+[connection signal="ready" from="ScrollContainer/MarginContainer/Ammo_HBox" to="." method="_on_h_box_container_ready"]

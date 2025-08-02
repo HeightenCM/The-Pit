@@ -17,6 +17,6 @@ func _on_button_pressed() -> void:
 
 func _on_ready() -> void:
 	if isEquippable:
-		pause_menu = get_parent().get_parent().get_parent()
+		pause_menu = get_parent().get_parent().get_parent().get_parent()
 	else:
 		pause_menu = get_parent().get_parent()

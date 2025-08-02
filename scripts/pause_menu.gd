@@ -4,7 +4,7 @@ extends Control
 var revolver_slots := []
 var shotgun_slots := []
 var rifle_slots := []
-@onready var ammo_hbox = $ScrollContainer/Ammo_HBox
+@onready var ammo_hbox = $ScrollContainer/MarginContainer/Ammo_HBox
 @onready var inventory_container = $Inventory_GridContainer
 @export var slot_scene: PackedScene
 @onready var resume_button = $VBoxContainer/Button
