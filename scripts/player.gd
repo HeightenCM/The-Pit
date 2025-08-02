@@ -38,8 +38,10 @@ func orbit_weapon():
 	current_weapon.rotation = dir.angle()
 	if mouse_pos.x < global_position.x:
 		current_weapon.get_node("Sprite2D").flip_v = true
+#		current_weapon.get_node("BulletSpawn").position.y = -abs(current_weapon.get_node("BulletSpawn").position.y)
 	else:
 		current_weapon.get_node("Sprite2D").flip_v = false
+#		current_weapon.get_node("BulletSpawn").position.y = abs(current_weapon.get_node("BulletSpawn").position.y)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") and current_weapon:

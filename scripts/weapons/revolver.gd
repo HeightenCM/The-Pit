@@ -5,7 +5,7 @@ extends "res://scripts/weapon.gd"
 func shoot():
 	var mouse_pos = get_global_mouse_position()
 	var bullet = bulletScene.instantiate()
-	bullet.position = $Sprite2D.get_child(0).position
-	bullet.direction = (mouse_pos - global_position)
-	print(bullet.direction)
-	get_parent().add_child(bullet)
+	get_parent().get_parent().add_child(bullet)
+	var firing_point = $BulletSpawn.global_position
+	bullet.global_position = firing_point
+	bullet.direction = (mouse_pos - firing_point).normalized()
