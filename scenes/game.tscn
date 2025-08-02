@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cupcrxm4vchqt"]
+[gd_scene load_steps=5 format=3 uid="uid://cupcrxm4vchqt"]
 
-[ext_resource type="Script" uid="uid://85qgb23pfnl4" path="res://scripts/game.gd" id="1_yqjtg"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://5w3x4mcig243" path="res://scenes/player.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://c4o5lgxy1k3kp" path="res://scenes/pause_menu.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://cam8swykaip38" path="res://scenes/ui.tscn" id="4_lbhrr"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_yqjtg")
@@ -11,6 +12,8 @@ script = ExtResource("1_yqjtg")
 position = Vector2(576, 320)
 
 [node name="PauseMenu" parent="Pete" instance=ExtResource("3_lnu2h")]
+z_index = 1
+z_as_relative = true
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -20,3 +23,5 @@ offset_right = -576.0
 offset_bottom = -320.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="UI" parent="Pete" instance=ExtResource("4_lbhrr")]
