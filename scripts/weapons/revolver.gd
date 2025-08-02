@@ -8,4 +8,4 @@ func shoot():
 	bullet.position = $Sprite2D.get_child(0).position
 	bullet.direction = (mouse_pos - global_position)
 	print(bullet.direction)
-	add_child(bullet)
+	get_parent().add_child(bullet)
