@@ -12,4 +12,6 @@ func set_hp(hp):
 
 func _on_button_pressed() -> void:
 	visible = false
+	pause_menu.refresh_slots()
+	pause_menu.refresh_inventory()
 	pause_menu.show_pause_menu()

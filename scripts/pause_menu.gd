@@ -4,11 +4,14 @@ extends Control
 var revolver_slots := []
 var shotgun_slots := []
 var rifle_slots := []
+var current_array
+var inventory := []
 @onready var ammo_hbox = $ScrollContainer/MarginContainer/Ammo_HBox
 @onready var inventory_container = $Inventory_GridContainer
 @export var slot_scene: PackedScene
 @onready var resume_button = $VBoxContainer/Button
 var index_selecting:int = -1
+var weapon_used:String = "revolver"
 
 func _on_resume() -> void:
 	ui.visible = true
@@ -28,26 +31,35 @@ func _on_ready() -> void:
 	slot_scene = load("res://scenes/slot_scene.tscn")
 	visible = false
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	revolver_slots.resize(6)
-	revolver_slots.fill(null)
-	shotgun_slots.resize(6)
-	shotgun_slots.fill(null)
-	rifle_slots.resize(6)
-	rifle_slots.fill(null)
-	refresh_slots()
-	populate_inventory()
-	disable_inventory()
 	
 func refresh_slots() -> void:
 	for child in ammo_hbox.get_children():
 		child.queue_free()
-	for i in range(revolver_slots.size()):
+	if weapon_used == "revolver":
+		current_array = revolver_slots
+	elif weapon_used == "shotgun":
+		current_array = shotgun_slots
+	elif weapon_used == "rifle":
+		current_array = rifle_slots
+	for i in range(current_array.size()):
 		var slot = slot_scene.instantiate()
 		slot.index = i
 		slot.isEquippable = true
-		slot.item = ""
+		slot.set_item(current_array[i])
 		ammo_hbox.add_child(slot)
 		print("Adding slot", i)
+		
+func refresh_inventory() -> void:
+	for child in inventory_container.get_children():
+		child.queue_free()
+	for i in range(inventory.size()):
+		var slot = slot_scene.instantiate()
+		slot.index = i
+		slot.isEquippable = false
+		slot.set_item(inventory[i])
+		inventory_container.add_child(slot)
+		print("added inventory slot", i, " ", slot.item)
+	disable_inventory()
 
 func populate_inventory() -> void:
 	for i in range(40):
@@ -77,7 +89,11 @@ func start_selection(index: int) -> void:
 	
 func select(index:int) -> void:
 	resume_button.disabled = false
-	var item_aux:String = ammo_hbox.get_child(index_selecting).item
-	ammo_hbox.get_child(index_selecting).item = inventory_container.get_child(index).item
-	inventory_container.get_child(index).item = item_aux
-	disable_inventory()
+	var item_aux:String = current_array[index_selecting]
+	current_array[index_selecting] = inventory[index]
+	inventory[index] = item_aux
+	#var item_aux:String = ammo_hbox.get_child(index_selecting).item
+	#ammo_hbox.get_child(index_selecting).set_item(inventory_container.get_child(index).item)
+	#inventory_container.get_child(index).set_item(item_aux)
+	refresh_slots()
+	refresh_inventory()

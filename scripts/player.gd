@@ -6,7 +6,29 @@ const SPEED = 5000.0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 var current_weapon: Weapon = null
 
+var revolver_slots := []
+var shotgun_slots := []
+var rifle_slots := []
+var inventory := []
+var pause_menu
+
 func _ready() -> void:
+	revolver_slots.resize(6)
+	revolver_slots.fill("")
+	shotgun_slots.resize(12)
+	shotgun_slots.fill("")
+	rifle_slots.resize(16)
+	rifle_slots.fill("")
+	inventory.resize(40)
+	inventory.fill("")
+	if has_node("PauseLayer/PauseMenu"):
+		pause_menu = get_node("PauseLayer/PauseMenu")
+		pause_menu.revolver_slots = revolver_slots;
+		pause_menu.shotgun_slots = shotgun_slots;
+		pause_menu.rifle_slots = rifle_slots;
+		pause_menu.inventory = inventory;
+		pause_menu.refresh_slots()
+		pause_menu.refresh_inventory()
 	current_weapon = preload("res://scenes/revolver.tscn").instantiate()
 	add_child(current_weapon)
 
