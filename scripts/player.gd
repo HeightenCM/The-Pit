@@ -38,13 +38,11 @@ func orbit_weapon():
 	current_weapon.rotation = dir.angle()
 	if mouse_pos.x < global_position.x:
 		current_weapon.scale.y = -1
-#		current_weapon.get_node("Sprite2D").flip_v = true
-#		current_weapon.get_node("BulletSpawn").position.y = -abs(current_weapon.get_node("BulletSpawn").position.y)
 	else:
 		current_weapon.scale.y = 1
-#		current_weapon.get_node("Sprite2D").flip_v = false
-#		current_weapon.get_node("BulletSpawn").position.y = abs(current_weapon.get_node("BulletSpawn").position.y)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept") and current_weapon:
+	var mouse_pos = get_global_mouse_position()
+	var dist = global_position.distance_to(mouse_pos)-10
+	if event.is_action_pressed("ui_accept") and current_weapon and dist >= orbit_radius:
 		current_weapon.shoot()
