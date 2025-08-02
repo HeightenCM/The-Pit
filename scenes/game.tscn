@@ -81,17 +81,12 @@ position = Vector2(321, 237)
 
 [node name="UI" parent="Pete" instance=ExtResource("4_lbhrr")]
 
-[node name="PauseMenu" parent="Pete" instance=ExtResource("3_lnu2h")]
+[node name="PauseLayer" type="CanvasLayer" parent="Pete"]
+scale = Vector2(2.5, 2)
+transform = Transform2D(2.5, 0, 0, 2, 0, 0)
+
+[node name="PauseMenu" parent="Pete/PauseLayer" instance=ExtResource("3_lnu2h")]
 visible = false
 z_index = 1
 z_as_relative = true
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -186.0
-offset_top = -105.667
-offset_right = -186.0
-offset_bottom = -105.667
-grow_horizontal = 1
-grow_vertical = 1
 scale = Vector2(0.386666, 0.506666)

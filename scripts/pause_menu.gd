@@ -1,6 +1,6 @@
 extends Control
 
-@onready var ui = get_parent().get_node("UI")
+@onready var ui = get_parent().get_parent().get_node("UI")
 var revolver_slots := []
 var shotgun_slots := []
 var rifle_slots := []
