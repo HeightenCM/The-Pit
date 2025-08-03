@@ -30,3 +30,4 @@ navigation_layers = 4
 shape = SubResource("CircleShape2D_md0e3")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="area_entered" from="EnemyAttackArea" to="." method="_on_enemy_attack_area_area_entered"]

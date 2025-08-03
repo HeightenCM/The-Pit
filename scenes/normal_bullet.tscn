@@ -20,3 +20,8 @@ texture = SubResource("AtlasTexture_fbib7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6reey")
+
+[node name="BulletDamageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletDamageArea"]
+shape = SubResource("CircleShape2D_6reey")

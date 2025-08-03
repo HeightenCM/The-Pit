@@ -4,6 +4,7 @@ extends CharacterBody2D
 var player
 @export var speed: float = 50.0
 @export var damage: int = 10
+@export var hp: int = 20
 
 
 func _on_ready() -> void:
@@ -22,3 +23,19 @@ func _physics_process(_delta):
 		var direction = (next_point - global_position).normalized()
 		velocity = direction * speed
 		move_and_slide()
+
+
+
+func _on_enemy_attack_area_area_entered(area: Area2D) -> void:
+	if area.name == "BulletDamageArea":
+		receive_damage(area)
+
+func receive_damage(area: Area2D) -> void:
+	var bullet = area.get_parent()
+	var damage = bullet.damage
+	hp -= damage
+	if hp <= 0:
+		die()
+
+func die() -> void:
+	queue_free()

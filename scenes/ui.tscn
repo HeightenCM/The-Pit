@@ -29,5 +29,21 @@ size_flags_horizontal = 6
 size_flags_vertical = 4
 value = 100.0
 
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="StartWaveButton" type="Button" parent="HBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Start Wave"
+
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]
