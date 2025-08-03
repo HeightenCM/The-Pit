@@ -76,13 +76,16 @@ func _input(event: InputEvent) -> void:
 
 func _on_interact_area_area_entered(area: Area2D) -> void:
 	if area.name == "EnemyAttackArea":
-		hp -= 10
-		hp_bar.value = hp
+		receive_damage(area)
 		start_countdown(area)
 
 func start_countdown(area: Area2D) -> void:
 	await get_tree().create_timer(1.0).timeout
 	if area in get_node("InteractArea").get_overlapping_areas():
-		hp -= 10
-		hp_bar.value = hp
+		receive_damage(area)
 		start_countdown(area)
+
+func receive_damage(area: Area2D) -> void:
+	var enemy = area.get_parent()
+	hp -= enemy.damage
+	hp_bar.value = hp

@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
 var player
 @export var speed: float = 50.0
+@export var damage: int = 10
 
 
 func _on_ready() -> void:
