@@ -39,3 +39,5 @@ position = Vector2(4, 0)
 scale = Vector2(0.67023, 0.67023)
 sprite_frames = SubResource("SpriteFrames_4k0e7")
 frame_progress = 0.048679
+
+[connection signal="ready" from="." to="." method="_on_ready"]

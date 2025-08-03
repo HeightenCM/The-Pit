@@ -7,10 +7,15 @@ const SPEED = 5000.0
 @onready var hp_bar
 var current_weapon: Weapon = null
 
+var revolver_index : int = 0
+var shotgun_index : int = 0
+var rifle_index : int = 0
+
 var revolver_slots := []
 var shotgun_slots := []
 var rifle_slots := []
 var inventory := []
+
 var pause_menu
 var hp = 100
 
@@ -71,7 +76,7 @@ func _input(event: InputEvent) -> void:
 	var mouse_pos = get_global_mouse_position()
 	var dist = global_position.distance_to(mouse_pos)-15
 	if event.is_action_pressed("ui_accept") and current_weapon and dist >= orbit_radius:
-		current_weapon.shoot()
+		current_weapon.shoot_type()
 
 
 func _on_interact_area_area_entered(area: Area2D) -> void:
@@ -89,3 +94,16 @@ func receive_damage(area: Area2D) -> void:
 	var enemy = area.get_parent()
 	hp -= enemy.damage
 	hp_bar.value = hp
+
+func get_next_round(weapon) -> String:
+	var next_round
+	if weapon == "revolver":
+		next_round = revolver_slots[revolver_index]
+		revolver_index = (revolver_index+1)%6
+	elif weapon == "shotgun":
+		next_round = shotgun_slots[shotgun_index]
+		shotgun_index = (shotgun_index+1)%12
+	elif weapon == "rifle":
+		next_round = rifle_slots[rifle_index]
+		rifle_index = (rifle_index+1)%16
+	return next_round
