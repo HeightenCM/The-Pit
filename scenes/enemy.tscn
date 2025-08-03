@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwpxwearebk43"]
+[gd_scene load_steps=5 format=3 uid="uid://c1johq0d850ij"]
 
-[ext_resource type="Texture2D" uid="uid://cbyi0t1apjpy6" path="res://icon.svg" id="1_7p1mj"]
-[ext_resource type="Script" uid="uid://cmqdg1d5ulusj" path="res://scripts/enemy.gd" id="1_md0e3"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_md0e3"]
+[ext_resource type="Texture2D" uid="uid://ctblybrixaytg" path="res://assets/sprites/characters/green_goblin.png" id="2_md0e3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_md0e3"]
 radius = 6.0
@@ -18,8 +18,8 @@ position = Vector2(0, 8)
 shape = SubResource("CapsuleShape2D_md0e3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_7p1mj")
+position = Vector2(1, -2)
+texture = ExtResource("2_md0e3")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 navigation_layers = 4

@@ -47,6 +47,8 @@ func start_wave() -> void:
 		enemy.hp = enemies[i]
 		enemy.speed = 50 * speed_multiplier[i]
 		enemy.damage = 10 * damage_multiplier[i]
+		if enemy.damage > 100:
+			enemy.get_node("Sprite2D").texture = "res://assets/sprites/characters/red_goblin.png"
 		var spawn_position = get_random_spawn_position()
 		enemy.global_position = spawn_position
 		add_child(enemy)

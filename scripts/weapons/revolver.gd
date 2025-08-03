@@ -7,7 +7,7 @@ func shoot(): #for testing
 	var mouse_pos = get_global_mouse_position()
 	var bullet = bulletScene.instantiate()
 	bullet.set_type("stun_bullet") #for testing
-	$BulletSpawn.get_node("AnimatedSprite2D").play("default")
+	$BulletSpawn/AnimatedSprite2D.play("default")
 	get_parent().get_parent().add_child(bullet)
 	var firing_point = $BulletSpawn.global_position
 	bullet.global_position = firing_point
