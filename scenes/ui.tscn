@@ -45,6 +45,17 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Start Wave"
 
+[node name="EnemiesLeftLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "Enemies Left: 0"
+
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="HBoxContainer3/StartWaveButton" to="." method="_on_start_wave_button_pressed"]

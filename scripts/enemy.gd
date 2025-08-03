@@ -41,7 +41,7 @@ func receive_damage(area: Area2D) -> void:
 		die()
 
 func die() -> void:
-	game.enemy_counter -= 1
+	game.update_enemies_left()
 	print(game.enemy_counter)
 	if game.enemy_counter <= 0:
 		game.finish_wave()

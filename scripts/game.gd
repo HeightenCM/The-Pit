@@ -3,6 +3,7 @@ extends Node2D
 var isWave = false
 var tutorial_complete = false
 var start_wave_button
+var enemies_left_label
 var no_wave = 0
 @export var enemy_scene: PackedScene
 
@@ -19,6 +20,7 @@ func _ready() -> void:
 	atlas.region = Rect2(Vector2(0, 0), Vector2(32, 32))
 	Input.set_custom_mouse_cursor(atlas, Input.CURSOR_ARROW, Vector2(32, 32))
 	start_wave_button = get_node("Pete/UI/HBoxContainer3/StartWaveButton")
+	enemies_left_label = get_node("Pete/UI/EnemiesLeftLabel")
 
 func start_wave() -> void:
 	isWave = true
@@ -53,8 +55,6 @@ func start_wave() -> void:
 func get_random_spawn_position() -> Vector2:
 	#376 396 772 792 x
 	#504 484 172 152 y
-	var region1_y = Vector2(112, 160)
-	var region1_x = Vector2(432, 448)
 	var x = 400
 	var y = 400
 	while x>=296 && x<=772 && y<= 484 && y >= 172:
@@ -70,3 +70,8 @@ func finish_wave() -> void:
 	isWave = false
 	start_wave_button.visible = true
 	no_wave += 1
+	enemies_left_label.visible = false
+
+func update_enemies_left():
+	enemy_counter -= 1
+	enemies_left_label.text = "Enemies left: " + str(enemy_counter)
