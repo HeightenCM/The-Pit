@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cupcrxm4vchqt"]
+[gd_scene load_steps=14 format=4 uid="uid://cupcrxm4vchqt"]
 
 [ext_resource type="Script" uid="uid://85qgb23pfnl4" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://ckn5x620l0655" path="res://assets/sprites/world/tileset.png" id="2_iywne"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://covfms2dtojsc" path="res://resources/normal_bullet.tres" id="7_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://c2wg3tjteyhxe" path="res://scenes/ui/announcement.tscn" id="7_u5sy4"]
 [ext_resource type="Resource" uid="uid://b4to0ifgyljty" path="res://resources/electro_bullet.tres" id="8_vtaks"]
+[ext_resource type="Resource" uid="uid://k0y0qt0jc7i8" path="res://resources/explosive_bullet.tres" id="9_vtaks"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
 texture = ExtResource("2_iywne")
@@ -133,6 +134,10 @@ item = ExtResource("7_0tnpc")
 [node name="Pickup2" parent="." instance=ExtResource("6_p57ef")]
 position = Vector2(288, 296)
 item = ExtResource("8_vtaks")
+
+[node name="Pickup3" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(337, 294)
+item = ExtResource("9_vtaks")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_p57ef")

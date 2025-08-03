@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="BulletData" load_steps=8 format=3 uid="uid://k0y0qt0jc7i8"]
+
+[ext_resource type="Texture2D" uid="uid://ce5bgyftgahcf" path="res://assets/sprites/guns/Bullets_Inventory.png" id="1_nvb8s"]
+[ext_resource type="Script" uid="uid://d1pq7cmr0lek4" path="res://resources/BulletData.gd" id="1_rnn51"]
+[ext_resource type="Texture2D" uid="uid://eb052y5gjxnk" path="res://assets/sprites/guns/bullet_effects.png" id="2_q0usp"]
+[ext_resource type="Texture2D" uid="uid://dvv4t8tyeuw8e" path="res://assets/sprites/guns/Bullets.png" id="4_aqh37"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s08qp"]
+atlas = ExtResource("1_nvb8s")
+region = Rect2(38, 67, 19, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pb41k"]
+atlas = ExtResource("2_q0usp")
+region = Rect2(0, 33, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7laf0"]
+atlas = ExtResource("4_aqh37")
+region = Rect2(0, 36, 14, 8)
+
+[resource]
+script = ExtResource("1_rnn51")
+type = 4
+sprite = SubResource("AtlasTexture_7laf0")
+muzzle_flash = SubResource("AtlasTexture_pb41k")
+inventory_icon = SubResource("AtlasTexture_s08qp")
+speed = 50.0
+damage = 5.0
+status_effect = "boom"
+metadata/_custom_type_script = "uid://d1pq7cmr0lek4"

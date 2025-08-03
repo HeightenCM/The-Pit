@@ -5,6 +5,7 @@ var player
 @export var speed: float = 50.0
 @export var damage: int = 10
 @export var hp: int = 20
+@export var isStuned: bool = false
 var game
 
 
@@ -15,7 +16,7 @@ func _on_ready() -> void:
 	game = get_tree().get_current_scene()
 
 func _physics_process(_delta):
-	if player:
+	if player and !isStuned:
 		agent.set_target_position(player.global_position)
 
 		if agent.is_navigation_finished():
@@ -51,9 +52,9 @@ func die() -> void:
 	queue_free()
 
 func stun(time) -> void:
-	set_physics_process(false)
+	isStuned = !isStuned
 	await get_tree().create_timer(time).timeout
-	set_physics_process(true)
+	isStuned = !isStuned
 
 
 func _on_enemy_hitbox_area_entered(area: Area2D) -> void:

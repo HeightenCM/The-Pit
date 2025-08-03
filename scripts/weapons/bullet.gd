@@ -15,9 +15,8 @@ func on_hit_enemy(enemy) -> void:
 		data.BulletType.Normal:
 			queue_free()
 		data.BulletType.Explosive:
-			set_process(false)
-			#bullet_damage_shape.radius = 11
-			await get_tree().create_timer(0.1).timeout
+			$BulletDamageArea/CollisionShape2D.scale.x = 11
+			await get_tree().create_timer(1).timeout
 			queue_free()
 		data.BulletType.Electro:
 			enemy.stun(1)
