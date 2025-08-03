@@ -136,4 +136,3 @@ navigation_polygon = SubResource("NavigationPolygon_p57ef")
 navigation_layers = 4
 
 [node name="Announcement" parent="." instance=ExtResource("7_u5sy4")]
-visible = false

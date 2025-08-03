@@ -6,6 +6,7 @@ var currentHealth : int = maxHealth
 var start_wave_button
 var enemies_left_label
 var player
+var game
 
 
 func set_hp(hp):
@@ -22,6 +23,7 @@ func _on_button_pressed() -> void:
 
 func _on_start_wave_button_pressed() -> void:
 	if is_empty():
+		game.get_node("Announcement").set_text("You must have at least one bullet equipped to start a wave")
 		return
 	get_tree().get_current_scene().start_wave()
 	start_wave_button.visible = false
@@ -41,7 +43,8 @@ func is_empty() -> bool:
 	return true
 
 func _on_ready() -> void:
-	player = get_tree().get_current_scene().get_node("Pete")
+	game = get_tree().get_current_scene()
+	player = game.get_node("Pete")
 	enemies_left_label = get_node("EnemiesLeftLabel")
 	enemies_left_label.visible = false
 	start_wave_button = get_node("HBoxContainer3/StartWaveButton")

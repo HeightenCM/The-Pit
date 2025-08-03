@@ -1,3 +1,16 @@
-[gd_scene format=3 uid="uid://c2wg3tjteyhxe"]
+[gd_scene load_steps=2 format=3 uid="uid://c2wg3tjteyhxe"]
+
+[ext_resource type="Script" uid="uid://pyc1o0hnmrwi" path="res://scripts/announcement.gd" id="1_edy45"]
 
 [node name="Announcement" type="CanvasLayer"]
+script = ExtResource("1_edy45")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 192.0
+offset_top = 192.0
+offset_right = 960.0
+offset_bottom = 256.0
+horizontal_alignment = 1
+
+[connection signal="ready" from="." to="." method="_on_ready"]
