@@ -21,10 +21,4 @@ func _on_ready() -> void:
 func set_item(new_item) -> void:
 	item = new_item
 	if item:
-		add_sprite()
-
-func add_sprite() -> void:
-	var sprite = Sprite2D.new()
-	sprite.texture = preload("res://icon.svg")
-	sprite.scale = Vector2(0.2, 0.2)
-	add_child(sprite)
+		$TextureRect.texture = item.inventory_icon
