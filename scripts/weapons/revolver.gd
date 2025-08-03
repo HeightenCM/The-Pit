@@ -5,6 +5,7 @@ extends "res://scripts/weapon.gd"
 func shoot():
 	var mouse_pos = get_global_mouse_position()
 	var bullet = bulletScene.instantiate()
+	bullet.set_type("explosive_round") #for testing
 	$BulletSpawn.get_node("AnimatedSprite2D").play("default")
 	get_parent().get_parent().add_child(bullet)
 	var firing_point = $BulletSpawn.global_position

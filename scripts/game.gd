@@ -22,7 +22,7 @@ func _ready() -> void:
 
 func start_wave() -> void:
 	isWave = true
-	print("wave started")
+	print("wave ", no_wave, " started")
 	if no_wave == 0:
 		enemies.resize(10)
 		enemies.fill(20)
