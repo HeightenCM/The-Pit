@@ -94,6 +94,8 @@ func receive_damage(area: Area2D) -> void:
 	var enemy = area.get_parent()
 	hp -= enemy.damage
 	hp_bar.value = hp
+	if hp <= 0:
+		die()
 
 func get_next_round(weapon) -> String:
 	var next_round
@@ -107,3 +109,7 @@ func get_next_round(weapon) -> String:
 		next_round = rifle_slots[rifle_index]
 		rifle_index = (rifle_index+1)%16
 	return next_round
+
+func die():
+	await get_tree().create_timer(0.5).timeout
+	get_tree().change_scene_to_file("res://scenes/death_screen.tscn")
