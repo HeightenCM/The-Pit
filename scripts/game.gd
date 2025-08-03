@@ -3,11 +3,47 @@ extends Node2D
 var isWave = false
 var tutorial_complete = false
 var start_wave_button
+var no_wave = 1
+@export var enemy_scene: PackedScene
+
+var enemies := []
+var enemy_counter: int
 
 func _ready() -> void:
+	enemy_scene = preload("res://scenes/enemy.tscn")
 	var sheet = preload("res://assets/sprites/cursors_improved.png")
 	var atlas = AtlasTexture.new()
 	atlas.atlas = sheet
 	atlas.region = Rect2(Vector2(0, 0), Vector2(32, 32))
 	Input.set_custom_mouse_cursor(atlas, Input.CURSOR_ARROW, Vector2(32, 32))
 	start_wave_button = get_node("Pete/UI/HBoxContainer3/StartWaveButton")
+
+func start_wave() -> void:
+	isWave = true
+	print("wave started")
+	if no_wave == 1:
+		enemies.resize(10)
+		enemies.fill(20)
+	enemy_counter = enemies.size()
+	for hp in enemies:
+		var enemy = enemy_scene.instantiate()
+		enemy.hp = hp
+		var spawn_position = get_random_spawn_position()
+		enemy.global_position = spawn_position
+		add_child(enemy)
+		await get_tree().create_timer(0.2).timeout
+	
+func get_random_spawn_position() -> Vector2:
+	#376 396 772 792 x
+	#504 484 172 152 y
+	var region1_y = Vector2(112, 160)
+	var region1_x = Vector2(432, 448)
+	var x = 400
+	var y = 400
+	while x>=296 && x<=772 && y<= 484 && y >= 172:
+		x = randf_range(376, 792)
+		y = randf_range(152, 504)
+	return Vector2(
+		x,
+		y
+	)
