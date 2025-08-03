@@ -24,6 +24,10 @@ func _physics_process(_delta):
 		var next_point = agent.get_next_path_position()
 		var direction = (next_point - global_position).normalized()
 		velocity = direction * speed
+		if velocity.x > 0:
+			$Sprite2D.flip_h = false
+		else:
+			$Sprite2D.flip_h = true
 		move_and_slide()
 
 
