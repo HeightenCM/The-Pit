@@ -4,6 +4,7 @@ const SPEED = 5000.0
 
 @export var orbit_radius: float = 25.0  # Distance from parent
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hp_bar
 var current_weapon: Weapon = null
 
 var revolver_slots := []
@@ -11,6 +12,7 @@ var shotgun_slots := []
 var rifle_slots := []
 var inventory := []
 var pause_menu
+var hp = 100
 
 func _ready() -> void:
 	revolver_slots.resize(6)
@@ -31,8 +33,10 @@ func _ready() -> void:
 		pause_menu.refresh_inventory()
 	current_weapon = preload("res://scenes/revolver.tscn").instantiate()
 	add_child(current_weapon)
+	if has_node("UI/HBoxContainer2/ProgressBar"):
+		hp_bar = get_node("UI/HBoxContainer2/ProgressBar")
 
-func _process(delta):
+func _process(_delta):
 	if current_weapon:
 		orbit_weapon()
 
@@ -68,3 +72,17 @@ func _input(event: InputEvent) -> void:
 	var dist = global_position.distance_to(mouse_pos)-15
 	if event.is_action_pressed("ui_accept") and current_weapon and dist >= orbit_radius:
 		current_weapon.shoot()
+
+
+func _on_interact_area_area_entered(area: Area2D) -> void:
+	if area.name == "EnemyAttackArea":
+		hp -= 10
+		hp_bar.value = hp
+		start_countdown(area)
+
+func start_countdown(area: Area2D) -> void:
+	await get_tree().create_timer(1.0).timeout
+	if area in get_node("InteractArea").get_overlapping_areas():
+		hp -= 10
+		hp_bar.value = hp
+		start_countdown(area)

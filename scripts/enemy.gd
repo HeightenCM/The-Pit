@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
 var player
-var speed: float = 50.0
+@export var speed: float = 50.0
 
 
 func _on_ready() -> void:
@@ -10,7 +10,7 @@ func _on_ready() -> void:
 	agent.path_desired_distance = 4.0
 	agent.target_desired_distance = 8.0
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if player:
 		agent.set_target_position(player.global_position)
 
