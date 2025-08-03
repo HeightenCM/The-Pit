@@ -6,6 +6,7 @@ var start_wave_button
 var enemies_left_label
 var no_wave = 0
 @export var enemy_scene: PackedScene
+var red_goblin = preload("res://assets/sprites/characters/red_goblin.png")
 
 var enemies := []
 var enemy_counter: int
@@ -47,8 +48,8 @@ func start_wave() -> void:
 		enemy.hp = enemies[i]
 		enemy.speed = 50 * speed_multiplier[i]
 		enemy.damage = 10 * damage_multiplier[i]
-		if enemy.damage > 100:
-			enemy.get_node("Sprite2D").texture = "res://assets/sprites/characters/red_goblin.png"
+		if enemy.hp > 50:
+			enemy.get_node("Sprite2D").texture = red_goblin
 		var spawn_position = get_random_spawn_position()
 		enemy.global_position = spawn_position
 		add_child(enemy)
