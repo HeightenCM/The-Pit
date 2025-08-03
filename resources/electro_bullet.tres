@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="BulletData" load_steps=6 format=3 uid="uid://b4to0ifgyljty"]
+
+[ext_resource type="Script" uid="uid://d1pq7cmr0lek4" path="res://resources/BulletData.gd" id="1_1jj0p"]
+[ext_resource type="Texture2D" uid="uid://eb052y5gjxnk" path="res://assets/sprites/guns/bullet_effects.png" id="1_rkqjq"]
+[ext_resource type="Texture2D" uid="uid://dvv4t8tyeuw8e" path="res://assets/sprites/guns/Bullets.png" id="3_huxuw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_milmm"]
+atlas = ExtResource("1_rkqjq")
+region = Rect2(16.8312, 17.0312, 15.0442, 14.1213)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pddje"]
+atlas = ExtResource("3_huxuw")
+region = Rect2(15.8159, 17.8618, 13.2906, 12.2754)
+
+[resource]
+script = ExtResource("1_1jj0p")
+type = 3
+sprite = SubResource("AtlasTexture_pddje")
+muzzle_flash = SubResource("AtlasTexture_milmm")
+speed = 500.0
+damage = 15.0
+status_effect = "stun"
+metadata/_custom_type_script = "uid://d1pq7cmr0lek4"

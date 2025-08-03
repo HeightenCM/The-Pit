@@ -1,19 +1,16 @@
 extends Control
 
 @export var index: int
-@export var item: String
+@export var item: BulletData
 @export var isEquippable: bool
 
 var pause_menu
-
-
 
 func _on_button_pressed() -> void:
 	if isEquippable:
 		pause_menu.start_selection(index)
 	else:
 		pause_menu.select(index)
-
 
 func _on_ready() -> void:
 	if isEquippable:
@@ -23,7 +20,7 @@ func _on_ready() -> void:
 
 func set_item(new_item) -> void:
 	item = new_item
-	if item != "":
+	if item:
 		add_sprite()
 
 func add_sprite() -> void:

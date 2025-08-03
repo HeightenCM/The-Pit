@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 5000.0
 
-@export var orbit_radius: float = 25.0  # Distance from parent
+@export var orbit_radius: float = 25.0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hp_bar
 var current_weapon: Weapon = null
@@ -11,23 +11,19 @@ var revolver_index : int = 0
 var shotgun_index : int = 0
 var rifle_index : int = 0
 
-var revolver_slots := []
-var shotgun_slots := []
-var rifle_slots := []
-var inventory := []
-
 var pause_menu
 var hp = 100
 
+@onready var revolver_slots: Array[BulletData]
+@onready var shotgun_slots: Array[BulletData]
+@onready var rifle_slots: Array[BulletData]
+@onready var inventory: Array[BulletData]
+
 func _ready() -> void:
 	revolver_slots.resize(6)
-	revolver_slots.fill("")
 	shotgun_slots.resize(12)
-	shotgun_slots.fill("")
 	rifle_slots.resize(16)
-	rifle_slots.fill("")
 	inventory.resize(40)
-	inventory.fill("")
 	if has_node("PauseLayer/PauseMenu"):
 		pause_menu = get_node("PauseLayer/PauseMenu")
 		pause_menu.revolver_slots = revolver_slots;
@@ -76,7 +72,7 @@ func _input(event: InputEvent) -> void:
 	var mouse_pos = get_global_mouse_position()
 	var dist = global_position.distance_to(mouse_pos)-15
 	if event.is_action_pressed("ui_accept") and current_weapon and dist >= orbit_radius:
-		current_weapon.shoot_type()
+		current_weapon.shoot(get_next_round(current_weapon))
 
 
 func _on_interact_area_area_entered(area: Area2D) -> void:
@@ -97,17 +93,21 @@ func receive_damage(area: Area2D) -> void:
 	if hp <= 0:
 		die()
 
-func get_next_round(weapon) -> String:
+func get_next_round(weapon: Weapon) -> BulletData:
 	var next_round
-	if weapon == "revolver":
-		next_round = revolver_slots[revolver_index]
-		revolver_index = (revolver_index+1)%6
-	elif weapon == "shotgun":
-		next_round = shotgun_slots[shotgun_index]
-		shotgun_index = (shotgun_index+1)%12
-	elif weapon == "rifle":
-		next_round = rifle_slots[rifle_index]
-		rifle_index = (rifle_index+1)%16
+	if weapon is Revolver:
+			next_round = revolver_slots[revolver_index]
+			revolver_index = (revolver_index+1)%6
+	#var next_round
+	#if weapon == "revolver":
+		#next_round = revolver_slots[revolver_index]
+		#revolver_index = (revolver_index+1)%6
+	#elif weapon == "shotgun":
+		#next_round = shotgun_slots[shotgun_index]
+		#shotgun_index = (shotgun_index+1)%12
+	#elif weapon == "rifle":
+		#next_round = rifle_slots[rifle_index]
+		#rifle_index = (rifle_index+1)%16
 	return next_round
 
 func die():

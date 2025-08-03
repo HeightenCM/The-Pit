@@ -32,13 +32,13 @@ func _on_start_wave_button_pressed() -> void:
 	
 func is_empty() -> bool:
 	for slot in player.revolver_slots:
-		if slot != "":
+		if slot != null:
 			return false
 	for slot in player.shotgun_slots:
-		if slot != "":
+		if slot != null:
 			return false
 	for slot in player.rifle_slots:
-		if slot != "":
+		if slot != null:
 			return false
 	return true
 
