@@ -68,12 +68,11 @@ func orbit_weapon():
 	else:
 		current_weapon.scale.y = 1
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	var mouse_pos = get_global_mouse_position()
 	var dist = global_position.distance_to(mouse_pos)-15
 	if event.is_action_pressed("ui_accept") and current_weapon and dist >= orbit_radius:
 		current_weapon.shoot(get_next_round(current_weapon))
-
 
 func _on_interact_area_area_entered(area: Area2D) -> void:
 	if area.name == "EnemyAttackArea":
