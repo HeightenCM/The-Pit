@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c1johq0d850ij"]
 
-[ext_resource type="Script" uid="uid://cmqdg1d5ulusj" path="res://scripts/enemy.gd" id="1_md0e3"]
+[ext_resource type="Script" uid="uid://cmqdg1d5ulusj" path="res://scripts/characters/enemy.gd" id="1_md0e3"]
 [ext_resource type="Texture2D" uid="uid://ctblybrixaytg" path="res://assets/sprites/characters/green_goblin.png" id="2_md0e3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_md0e3"]

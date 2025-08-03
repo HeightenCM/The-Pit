@@ -14,8 +14,8 @@ var speed_multiplier := []
 var damage_multiplier := []
 
 func _ready() -> void:
-	enemy_scene = preload("res://scenes/enemy.tscn")
-	var sheet = preload("res://assets/sprites/cursors_improved.png")
+	enemy_scene = preload("res://scenes/characters/enemy.tscn")
+	var sheet = preload("res://assets/sprites/guns/cursors_improved.png")
 	var atlas = AtlasTexture.new()
 	atlas.atlas = sheet
 	atlas.region = Rect2(Vector2(0, 0), Vector2(32, 32))

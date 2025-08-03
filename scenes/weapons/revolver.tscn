@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bowjaloak7q3l" path="res://assets/sprites/guns/1Revolver01.png" id="1_37vaw"]
 [ext_resource type="Script" uid="uid://brsmoitrrk6g" path="res://scripts/weapons/revolver.gd" id="1_rlopr"]
-[ext_resource type="PackedScene" uid="uid://dn84bb3bqldd6" path="res://scenes/bullet.tscn" id="2_844u3"]
+[ext_resource type="PackedScene" uid="uid://dn84bb3bqldd6" path="res://scenes/weapons/bullet.tscn" id="2_844u3"]
 
 [node name="Revolver" type="Node2D"]
 script = ExtResource("1_rlopr")

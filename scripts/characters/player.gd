@@ -32,7 +32,7 @@ func _ready() -> void:
 		pause_menu.inventory = inventory;
 		pause_menu.refresh_slots()
 		pause_menu.refresh_inventory()
-	current_weapon = preload("res://scenes/revolver.tscn").instantiate()
+	current_weapon = preload("res://scenes/weapons/revolver.tscn").instantiate()
 	add_child(current_weapon)
 	if has_node("UI/HBoxContainer2/ProgressBar"):
 		hp_bar = get_node("UI/HBoxContainer2/ProgressBar")
@@ -111,4 +111,4 @@ func get_next_round(weapon: Weapon) -> BulletData:
 
 func die():
 	await get_tree().create_timer(0.5).timeout
-	get_tree().change_scene_to_file("res://scenes/death_screen.tscn")
+	get_tree().change_scene_to_file("res://scenes/ui/death_screen.tscn")

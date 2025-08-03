@@ -28,7 +28,7 @@ func _on_button_pressed() -> void:
 
 
 func _on_ready() -> void:
-	slot_scene = load("res://scenes/slot_scene.tscn")
+	slot_scene = load("res://scenes/ui/slot_scene.tscn")
 	visible = false
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	

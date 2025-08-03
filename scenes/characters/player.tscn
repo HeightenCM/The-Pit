@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://5w3x4mcig243"]
 
-[ext_resource type="Script" uid="uid://bjobl0ondsg6m" path="res://scripts/player.gd" id="1_qhqgy"]
+[ext_resource type="Script" uid="uid://bjobl0ondsg6m" path="res://scripts/characters/player.gd" id="1_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://bih5l30u877bw" path="res://assets/sprites/characters/Pete_SpriteSheet.png" id="2_dqkch"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
