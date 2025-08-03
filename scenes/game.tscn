@@ -127,6 +127,10 @@ scale = Vector2(0.386666, 0.506666)
 [node name="Pickup" parent="." instance=ExtResource("6_p57ef")]
 position = Vector2(256, 248)
 
+[node name="Pickup2" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(288, 296)
+item = "stun_bullet"
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_p57ef")
 navigation_layers = 4
