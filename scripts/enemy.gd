@@ -34,8 +34,8 @@ func _on_enemy_attack_area_area_entered(area: Area2D) -> void:
 
 func receive_damage(area: Area2D) -> void:
 	var bullet = area.get_parent()
-	bullet.on_hit_enemy(self)
 	var damage = bullet.damage
+	bullet.on_hit_enemy(self)
 	hp -= damage
 	if hp <= 0:
 		die()
@@ -46,3 +46,8 @@ func die() -> void:
 	if game.enemy_counter <= 0:
 		game.finish_wave()
 	queue_free()
+
+func stun(time) -> void:
+	set_physics_process(false)
+	await get_tree().create_timer(time).timeout
+	set_physics_process(true)

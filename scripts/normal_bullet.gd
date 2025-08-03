@@ -35,5 +35,6 @@ func on_hit_enemy(enemy) -> void:
 		await get_tree().create_timer(0.1).timeout
 		queue_free()
 	elif type == "stun_bullet":
-		damage = 15
+		enemy.stun(1)
+		queue_free()
 	
