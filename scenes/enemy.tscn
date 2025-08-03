@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1johq0d850ij"]
+[gd_scene load_steps=6 format=3 uid="uid://c1johq0d850ij"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_md0e3"]
+[ext_resource type="Script" uid="uid://cmqdg1d5ulusj" path="res://scripts/enemy.gd" id="1_md0e3"]
 [ext_resource type="Texture2D" uid="uid://ctblybrixaytg" path="res://assets/sprites/characters/green_goblin.png" id="2_md0e3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_md0e3"]
@@ -8,7 +8,11 @@ radius = 6.0
 height = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_md0e3"]
-radius = 14.0
+radius = 15.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ra3w"]
+radius = 9.0
+height = 22.0
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_md0e3")
@@ -27,7 +31,15 @@ navigation_layers = 4
 [node name="EnemyAttackArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyAttackArea"]
+position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_md0e3")
+
+[node name="EnemyHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_4ra3w")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="area_entered" from="EnemyAttackArea" to="." method="_on_enemy_attack_area_area_entered"]
+[connection signal="area_entered" from="EnemyHitbox" to="." method="_on_enemy_hitbox_area_entered"]
