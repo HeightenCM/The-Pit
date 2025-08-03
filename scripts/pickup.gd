@@ -19,7 +19,7 @@ func _on_ready() -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.name == "InteractArea":
 		print("Player's pickup detector entered")
-		var player = area.get_parent()
+		player = area.get_parent()
 		var i:int = 0
 		while i < player.inventory.size() && player.inventory[i]!="":
 			i += 1

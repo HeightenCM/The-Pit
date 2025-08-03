@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwpxwearebk43"]
+
+[ext_resource type="Texture2D" uid="uid://cbyi0t1apjpy6" path="res://icon.svg" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://cmqdg1d5ulusj" path="res://scripts/enemy.gd" id="1_md0e3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_md0e3"]
+radius = 6.0
+height = 12.0
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_md0e3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+shape = SubResource("CapsuleShape2D_md0e3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_7p1mj")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+navigation_layers = 4
+
+[connection signal="ready" from="." to="." method="_on_ready"]
