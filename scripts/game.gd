@@ -3,7 +3,7 @@ extends Node2D
 var isWave = false
 var tutorial_complete = false
 var start_wave_button
-var no_wave = 1
+var no_wave = 0
 @export var enemy_scene: PackedScene
 
 var enemies := []
@@ -21,9 +21,11 @@ func _ready() -> void:
 func start_wave() -> void:
 	isWave = true
 	print("wave started")
-	if no_wave == 1:
+	if no_wave == 0:
 		enemies.resize(10)
 		enemies.fill(20)
+	else:
+		enemies.append(20)
 	enemy_counter = enemies.size()
 	for hp in enemies:
 		var enemy = enemy_scene.instantiate()
@@ -47,3 +49,9 @@ func get_random_spawn_position() -> Vector2:
 		x,
 		y
 	)
+
+func finish_wave() -> void:
+	print("Wave ", no_wave, " completed")
+	isWave = false
+	start_wave_button.visible = true
+	no_wave += 1

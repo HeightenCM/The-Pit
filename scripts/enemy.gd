@@ -5,12 +5,14 @@ var player
 @export var speed: float = 50.0
 @export var damage: int = 10
 @export var hp: int = 20
+var game
 
 
 func _on_ready() -> void:
 	player = get_parent().get_node("Pete")
 	agent.path_desired_distance = 4.0
 	agent.target_desired_distance = 8.0
+	game = get_tree().get_current_scene()
 
 func _physics_process(_delta):
 	if player:
@@ -38,4 +40,8 @@ func receive_damage(area: Area2D) -> void:
 		die()
 
 func die() -> void:
+	game.enemy_counter -= 1
+	print(game.enemy_counter)
+	if game.enemy_counter <= 0:
+		game.finish_wave()
 	queue_free()
