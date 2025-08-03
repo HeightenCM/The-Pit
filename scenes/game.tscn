@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://cupcrxm4vchqt"]
+[gd_scene load_steps=10 format=4 uid="uid://cupcrxm4vchqt"]
 
 [ext_resource type="Script" uid="uid://85qgb23pfnl4" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://ckn5x620l0655" path="res://assets/sprites/world/tileset.png" id="2_iywne"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://c4o5lgxy1k3kp" path="res://scenes/pause_menu.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cam8swykaip38" path="res://scenes/ui.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://edpd16nftyyd" path="res://scenes/pickup.tscn" id="6_p57ef"]
-[ext_resource type="PackedScene" uid="uid://c1johq0d850ij" path="res://scenes/enemy.tscn" id="7_u5sy4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
 texture = ExtResource("2_iywne")
@@ -134,6 +133,3 @@ item = "stun_bullet"
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_p57ef")
 navigation_layers = 4
-
-[node name="Enemy" parent="." instance=ExtResource("7_u5sy4")]
-position = Vector2(592, 576)
