@@ -32,8 +32,8 @@ func _on_enemy_attack_area_area_entered(area: Area2D) -> void:
 	pass
 
 func receive_damage(area: Area2D) -> void:
-	var bullet = area.get_parent()
-	var damage = bullet.damage
+	var bullet = area.get_parent() as Bullet
+	var damage = bullet.data.damage
 	bullet.on_hit_enemy(self)
 	hp -= damage
 	if hp <= 0:

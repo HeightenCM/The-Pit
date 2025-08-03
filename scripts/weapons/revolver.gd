@@ -1,29 +1,21 @@
-extends "res://scripts/weapon.gd"
+extends Weapon
+class_name Revolver
 
-@onready var bulletScene = preload("res://scenes/normal_bullet.tscn")
-var player
+@export var bullet_scene: PackedScene
 
-func shoot(): #for testing
-	var mouse_pos = get_global_mouse_position()
-	var bullet = bulletScene.instantiate()
-	bullet.set_type("stun_bullet") #for testing
-	$BulletSpawn/AnimatedSprite2D.play("default")
-	get_parent().get_parent().add_child(bullet)
-	var firing_point = $BulletSpawn.global_position
-	bullet.global_position = firing_point
-	bullet.direction = (mouse_pos - firing_point).normalized()
+func shoot(bullet_data: BulletData):
+	if bullet_data:
+		var mouse_pos = get_global_mouse_position()
+		var bullet_instance = bullet_scene.instantiate() as Bullet
+		bullet_instance.data = bullet_data
+		bullet_instance.direction = (mouse_pos - global_position).normalized()
+		bullet_instance.global_position = global_position
+		get_tree().current_scene.add_child(bullet_instance)
+		show_muzzle_flash(bullet_data.muzzle_flash)
 
-func shoot_type():
-	var mouse_pos = get_global_mouse_position()
-	var bullet = bulletScene.instantiate()
-	bullet.set_type(player.get_next_round("revolver"))
-	if bullet.type != "":
-		$BulletSpawn.get_node("AnimatedSprite2D").play("default")
-		get_parent().get_parent().add_child(bullet)
-		var firing_point = $BulletSpawn.global_position
-		bullet.global_position = firing_point
-		bullet.direction = (mouse_pos - firing_point).normalized()
-
-
-func _on_ready() -> void:
-	player = get_tree().get_current_scene().get_node("Pete")
+func show_muzzle_flash(texture: Texture2D) -> void:
+	var muzzle_flash_sprite := $BulletSpawn/MuzzleFlash
+	muzzle_flash_sprite.texture = texture
+	muzzle_flash_sprite.visible = true
+	await get_tree().create_timer(0.1).timeout
+	muzzle_flash_sprite.visible = false

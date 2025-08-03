@@ -1,11 +1,11 @@
 extends Control
 
 @onready var ui = get_parent().get_parent().get_node("UI")
-var revolver_slots := []
-var shotgun_slots := []
-var rifle_slots := []
-var current_array
-var inventory := []
+var revolver_slots : Array[BulletData]
+var shotgun_slots : Array[BulletData]
+var rifle_slots : Array[BulletData]
+var current_array: Array[BulletData]
+var inventory : Array[BulletData]
 @onready var ammo_hbox = $ScrollContainer/MarginContainer/Ammo_HBox
 @onready var inventory_container = $Inventory_GridContainer
 @export var slot_scene: PackedScene
@@ -89,7 +89,7 @@ func start_selection(index: int) -> void:
 	
 func select(index:int) -> void:
 	resume_button.disabled = false
-	var item_aux:String = current_array[index_selecting]
+	var item_aux:BulletData = current_array[index_selecting]
 	current_array[index_selecting] = inventory[index]
 	inventory[index] = item_aux
 	#var item_aux:String = ammo_hbox.get_child(index_selecting).item

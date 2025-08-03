@@ -1,10 +1,10 @@
 extends Node2D
 
-@export var item: String
+@export var item: BulletData
 var player
 
 
-func set_item(new_item: String) -> void:
+func set_item(new_item: BulletData) -> void:
 	item = new_item
 	
 
@@ -21,7 +21,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		print("Player's pickup detector entered")
 		player = area.get_parent()
 		var i:int = 0
-		while i < player.inventory.size() && player.inventory[i]!="":
+		while i < player.inventory.size() && player.inventory[i]!=null:
 			i += 1
 		if i < player.inventory.size():
 			player.inventory[i] = item
