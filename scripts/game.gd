@@ -19,7 +19,7 @@ func _ready() -> void:
 	var atlas = AtlasTexture.new()
 	atlas.atlas = sheet
 	atlas.region = Rect2(Vector2(0, 0), Vector2(32, 32))
-	Input.set_custom_mouse_cursor(atlas, Input.CURSOR_ARROW, Vector2(32, 32))
+	Input.set_custom_mouse_cursor(atlas, Input.CURSOR_ARROW, Vector2(16, 16))
 	start_wave_button = get_node("Pete/UI/HBoxContainer3/StartWaveButton")
 	enemies_left_label = get_node("Pete/UI/EnemiesLeftLabel")
 
