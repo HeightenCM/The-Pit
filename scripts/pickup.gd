@@ -10,10 +10,7 @@ func set_item(new_item: BulletData) -> void:
 
 func _on_ready() -> void:
 	player = get_parent().get_node("Pete")
-	var sprite = Sprite2D.new()
-	sprite.texture = preload("res://icon.svg")
-	sprite.scale = Vector2(0.2, 0.2)
-	add_child(sprite)
+	$Area2D/Sprite2D.texture = item.inventory_icon
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
