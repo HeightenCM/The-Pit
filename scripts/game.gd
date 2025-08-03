@@ -8,6 +8,8 @@ var no_wave = 0
 
 var enemies := []
 var enemy_counter: int
+var speed_multiplier := []
+var damage_multiplier := []
 
 func _ready() -> void:
 	enemy_scene = preload("res://scenes/enemy.tscn")
@@ -24,12 +26,25 @@ func start_wave() -> void:
 	if no_wave == 0:
 		enemies.resize(10)
 		enemies.fill(20)
+		speed_multiplier.resize(10)
+		speed_multiplier.fill(1)
+		damage_multiplier.resize(10)
+		damage_multiplier.fill(1.0)
 	else:
 		enemies.append(20)
+		speed_multiplier.append(1.0)
+		damage_multiplier.append(1)
+		for i in enemies.size():
+			speed_multiplier[i] += [0.0, 0.0, 0.0, 0.1, 0.2, 0.3].pick_random()
+			enemies[i] += randi() % 6
+			if randf() < 0.05:
+				damage_multiplier[i] += 1
 	enemy_counter = enemies.size()
-	for hp in enemies:
+	for i in enemies.size():
 		var enemy = enemy_scene.instantiate()
-		enemy.hp = hp
+		enemy.hp = enemies[i]
+		enemy.speed = 50 * speed_multiplier[i]
+		enemy.damage = 10 * damage_multiplier[i]
 		var spawn_position = get_random_spawn_position()
 		enemy.global_position = spawn_position
 		add_child(enemy)
