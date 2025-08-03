@@ -24,6 +24,6 @@ sprite = SubResource("AtlasTexture_7laf0")
 muzzle_flash = SubResource("AtlasTexture_pb41k")
 inventory_icon = SubResource("AtlasTexture_s08qp")
 speed = 50.0
-damage = 5.0
+damage = 30.0
 status_effect = "boom"
 metadata/_custom_type_script = "uid://d1pq7cmr0lek4"
