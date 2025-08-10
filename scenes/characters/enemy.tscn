@@ -40,6 +40,14 @@ shape = SubResource("CircleShape2D_md0e3")
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_4ra3w")
 
+[node name="HealthBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(40, 3)
+offset_left = -20.0
+offset_top = -21.0
+offset_right = 20.0
+offset_bottom = -12.0
+show_percentage = false
+
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="area_entered" from="EnemyAttackArea" to="." method="_on_enemy_attack_area_area_entered"]
 [connection signal="area_entered" from="EnemyHitbox" to="." method="_on_enemy_hitbox_area_entered"]

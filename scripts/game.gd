@@ -45,14 +45,14 @@ func start_wave() -> void:
 	enemy_counter = enemies.size()
 	for i in enemies.size():
 		var enemy = enemy_scene.instantiate()
-		enemy.hp = enemies[i]
+		if enemies[i] > 50:
+			enemy.get_node("Sprite2D").texture = red_goblin
 		enemy.speed = 50 * speed_multiplier[i]
 		enemy.damage = 10 * damage_multiplier[i]
-		if enemy.hp > 50:
-			enemy.get_node("Sprite2D").texture = red_goblin
 		var spawn_position = get_random_spawn_position()
 		enemy.global_position = spawn_position
 		add_child(enemy)
+		enemy.set_max_hp(enemies[i])
 		await get_tree().create_timer(0.2).timeout
 	
 func get_random_spawn_position() -> Vector2:

@@ -6,10 +6,14 @@ var player
 @export var damage: int = 10
 @export var hp: int = 20
 @export var isStuned: bool = false
+@onready var health_bar = $HealthBar
 var game
 
+	
 
 func _on_ready() -> void:
+	#health_bar = get_node("HealthBar")
+	health_bar.value = health_bar.max_value
 	player = get_parent().get_node("Pete")
 	agent.path_desired_distance = 4.0
 	agent.target_desired_distance = 8.0
@@ -38,9 +42,9 @@ func _on_enemy_attack_area_area_entered(area: Area2D) -> void:
 
 func receive_damage(area: Area2D) -> void:
 	var bullet = area.get_parent() as Bullet
-	var damage = bullet.data.damage
+	var bullet_damage = bullet.data.damage
 	bullet.on_hit_enemy(self)
-	hp -= damage
+	set_hp(hp-bullet_damage)
 	if hp <= 0:
 		die()
 
@@ -60,3 +64,11 @@ func stun(time) -> void:
 func _on_enemy_hitbox_area_entered(area: Area2D) -> void:
 	if area.name == "BulletDamageArea":
 		receive_damage(area)
+
+func set_max_hp(value) -> void:
+	set_hp(value)
+	health_bar.max_value = value
+	
+func set_hp(value: int) -> void:
+	hp = value
+	health_bar.value = value
