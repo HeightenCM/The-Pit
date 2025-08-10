@@ -12,6 +12,7 @@ var inventory : Array[BulletData]
 @onready var resume_button = $VBoxContainer/Button
 var index_selecting:int = -1
 var weapon_used:String = "revolver"
+var game
 
 func _on_resume() -> void:
 	ui.visible = true
@@ -28,6 +29,7 @@ func _on_button_pressed() -> void:
 
 
 func _on_ready() -> void:
+	game = get_tree().get_current_scene()
 	slot_scene = load("res://scenes/ui/slot_scene.tscn")
 	visible = false
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -83,9 +85,12 @@ func enable_inventory() -> void:
 		child.get_child(0).mouse_filter = Control.MOUSE_FILTER_STOP
 
 func start_selection(index: int) -> void:
-	index_selecting = index
-	enable_inventory()
-	resume_button.disabled = true
+	if !game.isWave:
+		index_selecting = index
+		enable_inventory()
+		resume_button.disabled = true
+	else:
+		game.get_node("Announcement").set_text("You can't switch ammo while fighting a wave")
 	
 func select(index:int) -> void:
 	resume_button.disabled = false

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://pyc1o0hnmrwi" path="res://scripts/ui/announcement.gd" id="1_edy45"]
 
 [node name="Announcement" type="CanvasLayer"]
+layer = 10
 script = ExtResource("1_edy45")
 
 [node name="Label" type="Label" parent="."]
