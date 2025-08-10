@@ -6,7 +6,7 @@ var player
 
 func set_item(new_item: BulletData) -> void:
 	item = new_item
-	
+	$Area2D/Sprite2D.texture = item.inventory_icon
 
 func _on_ready() -> void:
 	player = get_parent().get_node("Pete")

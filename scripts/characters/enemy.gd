@@ -7,12 +7,14 @@ var player
 @export var hp: int = 20
 @export var isStuned: bool = false
 @onready var health_bar = $HealthBar
+var pickup_scene: PackedScene
 var game
 
 	
 
 func _on_ready() -> void:
 	#health_bar = get_node("HealthBar")
+	pickup_scene = preload("res://scenes/pickup.tscn")
 	health_bar.value = health_bar.max_value
 	player = get_parent().get_node("Pete")
 	agent.path_desired_distance = 4.0
@@ -51,6 +53,7 @@ func receive_damage(area: Area2D) -> void:
 func die() -> void:
 	game.update_enemies_left()
 	print(game.enemy_counter)
+	decide_drop()
 	if game.enemy_counter <= 0:
 		game.finish_wave()
 	queue_free()
@@ -72,3 +75,18 @@ func set_max_hp(value) -> void:
 func set_hp(value: int) -> void:
 	hp = value
 	health_bar.value = value
+
+func decide_drop() -> void:
+	var rand_int = randi() % 100 + 1
+	if rand_int == 1:
+		spawn_pickup_bullet(load("res://resources/explosive_bullet.tres"))
+	elif rand_int <= 11:
+		spawn_pickup_bullet(load("res://resources/normal_bullet.tres"))
+	elif  rand_int <= 15:
+		spawn_pickup_bullet(load("res://resources/electro_bullet.tres"))
+
+func spawn_pickup_bullet(type):
+	var pickup = pickup_scene.instantiate()
+	pickup.set_item(type)
+	pickup.global_position = global_position
+	game.call_deferred("add_child", pickup)
