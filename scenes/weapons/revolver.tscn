@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://ct8s5fjqaqrb7"]
+[gd_scene load_steps=5 format=3 uid="uid://ct8s5fjqaqrb7"]
 
 [ext_resource type="Texture2D" uid="uid://bowjaloak7q3l" path="res://assets/sprites/guns/1Revolver01.png" id="1_37vaw"]
 [ext_resource type="Script" uid="uid://brsmoitrrk6g" path="res://scripts/weapons/revolver.gd" id="1_rlopr"]
 [ext_resource type="PackedScene" uid="uid://dn84bb3bqldd6" path="res://scenes/weapons/bullet.tscn" id="2_844u3"]
+[ext_resource type="Texture2D" uid="uid://cov5fi8o1duyy" path="res://assets/sprites/guns/smoke_puff.png" id="3_y8ai0"]
 
 [node name="Revolver" type="Node2D"]
 script = ExtResource("1_rlopr")
 bullet_scene = ExtResource("2_844u3")
+smoke_texture = ExtResource("3_y8ai0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_37vaw")
