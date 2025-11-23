@@ -75,8 +75,10 @@ theme_override_constants/v_separation = 10
 columns = 10
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Tooltip" parent="CanvasLayer" instance=ExtResource("2_0lmf7")]
+visible = false
 offset_right = -1110.0
 offset_bottom = -625.0
 
