@@ -3,10 +3,13 @@ class_name Bullet
 
 var data: BulletData
 var direction := Vector2.ZERO
+@onready var sprite  
 
 func _ready() -> void:
+	sprite = self.get_node("Sprite2D")
+	sprite.texture = data.sprite 
 	rotation = direction.angle()
-
+	
 func _process(delta: float) -> void:
 	position += direction.normalized() * data.speed * delta
 

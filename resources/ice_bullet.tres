@@ -1,11 +1,35 @@
-[gd_resource type="Resource" script_class="BulletData" load_steps=2 format=3 uid="uid://c44f37x0pnv1n"]
+[gd_resource type="Resource" script_class="BulletData" load_steps=10 format=3 uid="uid://c3072rmfg3d52"]
 
+[ext_resource type="Texture2D" uid="uid://ce5bgyftgahcf" path="res://assets/sprites/guns/Bullets_Inventory.png" id="1_02caa"]
 [ext_resource type="Script" uid="uid://d1pq7cmr0lek4" path="res://resources/BulletData.gd" id="1_384jj"]
+[ext_resource type="Texture2D" uid="uid://c2v1vmgpc6tdg" path="res://assets/sprites/guns/hit effects.png" id="1_eo77v"]
+[ext_resource type="Texture2D" uid="uid://chjts823h44hh" path="res://assets/sprites/guns/bullet_effects_new.png" id="2_02caa"]
+[ext_resource type="Texture2D" uid="uid://dvv4t8tyeuw8e" path="res://assets/sprites/guns/Bullets.png" id="4_4qxfu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qxfu"]
+atlas = ExtResource("1_eo77v")
+region = Rect2(23, 0, 9, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbsgt"]
+atlas = ExtResource("1_02caa")
+region = Rect2(42, 1, 11, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4mrj"]
+atlas = ExtResource("2_02caa")
+region = Rect2(19, 3, 11, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m6ek"]
+atlas = ExtResource("4_4qxfu")
+region = Rect2(21, 4, 10, 7)
 
 [resource]
 script = ExtResource("1_384jj")
-type = 0
-speed = 300.0
+type = 1
+sprite = SubResource("AtlasTexture_8m6ek")
+muzzle_flash = SubResource("AtlasTexture_r4mrj")
+inventory_icon = SubResource("AtlasTexture_jbsgt")
+hit_effect = SubResource("AtlasTexture_4qxfu")
+speed = 200.0
 damage = 10.0
 status_effect = ""
 metadata/_custom_type_script = "uid://d1pq7cmr0lek4"

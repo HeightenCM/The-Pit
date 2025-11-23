@@ -1,18 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://dn84bb3bqldd6"]
+[gd_scene load_steps=5 format=3 uid="uid://cm7wovlciir2g"]
 
-[ext_resource type="Script" uid="uid://be18qo1al7b6n" path="res://scripts/weapons/bullet.gd" id="1_dnt7v"]
-[ext_resource type="Texture2D" uid="uid://dvv4t8tyeuw8e" path="res://assets/sprites/guns/Bullets.png" id="2_1t05q"]
+[ext_resource type="Script" uid="uid://be18qo1al7b6n" path="res://scripts/weapons/bullet.gd" id="1_mjt5h"]
+[ext_resource type="Texture2D" uid="uid://dvv4t8tyeuw8e" path="res://assets/sprites/guns/Bullets.png" id="2_f0jrp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fbib7"]
-atlas = ExtResource("2_1t05q")
-region = Rect2(2, 5, 13, 5)
+atlas = ExtResource("2_f0jrp")
+region = Rect2(21, 4, 10, 7)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6reey"]
 radius = 3.0
 
-[node name="NormalBullet" type="Area2D"]
+[node name="IceBullet" type="Area2D"]
 scale = Vector2(3, 3)
-script = ExtResource("1_dnt7v")
+script = ExtResource("1_mjt5h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.477)
