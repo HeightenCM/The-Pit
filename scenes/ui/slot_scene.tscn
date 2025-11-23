@@ -23,5 +23,6 @@ offset_bottom = 65.0
 mouse_filter = 2
 stretch_mode = 3
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

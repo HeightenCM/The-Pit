@@ -22,3 +22,6 @@ func on_hit_enemy(enemy) -> void:
 		data.BulletType.Electro:
 			enemy.stun(1)
 			queue_free()
+
+func on_hit_wall() -> void:
+	pass

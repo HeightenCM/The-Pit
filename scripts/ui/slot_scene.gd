@@ -22,3 +22,7 @@ func set_item(new_item) -> void:
 	item = new_item
 	if item:
 		$TextureRect.texture = item.inventory_icon
+
+
+func _on_mouse_entered() -> void:
+	pass # Replace with function body.

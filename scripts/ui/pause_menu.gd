@@ -102,3 +102,10 @@ func select(index:int) -> void:
 	#inventory_container.get_child(index).set_item(item_aux)
 	refresh_slots()
 	refresh_inventory()
+
+
+func _on_visibility_changed() -> void:
+	if visible:
+		get_node("CanvasLayer").visible = true
+	else:
+		get_node("CanvasLayer").visible = false
