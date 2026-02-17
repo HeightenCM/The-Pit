@@ -3,6 +3,7 @@ extends Control
 @export var index: int
 @export var item: BulletData
 @export var isEquippable: bool
+@onready var infoPanel: Control
 
 var pause_menu
 
@@ -17,6 +18,7 @@ func _on_ready() -> void:
 		pause_menu = get_parent().get_parent().get_parent().get_parent()
 	else:
 		pause_menu = get_parent().get_parent()
+	infoPanel = pause_menu.get_node("info_panel")
 
 func set_item(new_item) -> void:
 	item = new_item
@@ -25,4 +27,5 @@ func set_item(new_item) -> void:
 
 
 func _on_mouse_entered() -> void:
-	pass # Replace with function body.
+	infoPanel.updateInfoBulletData(item)
+	

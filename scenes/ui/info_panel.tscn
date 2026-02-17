@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://b01auxdwukh0f"]
+[gd_scene load_steps=2 format=3 uid="uid://b01auxdwukh0f"]
+
+[ext_resource type="Script" uid="uid://doub5wn23tm2" path="res://scripts/ui/info_panel.gd" id="1_fompm"]
 
 [node name="info_panel" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fompm")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -20,10 +23,15 @@ offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 28.0
+offset_top = 25.0
+offset_right = 68.0
+offset_bottom = 48.0
 
 [node name="Label2" type="Label" parent="Panel"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 12.0
+offset_top = 78.0
+offset_right = 244.0
+offset_bottom = 250.0
+autowrap_mode = 3
